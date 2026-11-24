@@ -74,4 +74,4 @@ Exports fell to 49% in May 2026 and were 76% in September 2026. Because JODI run
 - JODI is reported by governments and is sometimes revised. The pipeline records revisions against the reference copy.
 - Stock definitions differ by country, so compare changes in stocks, not levels.
 - Canada has no products data in JODI. Brazil's products data stops in December 2022. Venezuela reports zero product demand from 2025, which is almost certainly missing reporting.
-- The Baker Hughes download link changes monthly and is found by reading its web page. If the page changes, the pipeline keeps the previous rig data and records a warning rather than failing.
+- Baker Hughes' site returns 403 Forbidden to automated requests from GitHub's servers, so the monthly report is downloaded by hand and uploaded to `data/manual/rigs/`. Uploading it starts a run. If no new report arrives, the pipeline keeps the previous rig data and shows a reminder once it is more than 2 months behind. Rigs aren't a forecast input, so a late upload never affects the forecast.

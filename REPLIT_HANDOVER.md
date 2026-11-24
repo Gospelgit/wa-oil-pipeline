@@ -75,7 +75,7 @@ One row per country: `country`, `short_name`, `region`, `latest_month`, `latest_
 | rules | The thresholds: closed below 60%, open from 90% for 2 months |
 
 ### quality.json
-`newest_month`, `revised_since_reference` (count), `stopped_reporting` ([{country, last_month}]), `unusual_jumps` (rows with country, product, flow, month, value, change_pct, score), `rig_warning` (string or null).
+`newest_month`, `revised_since_reference` (count), `stopped_reporting` ([{country, last_month}]), `unusual_jumps` (rows with country, product, flow, month, value, change_pct, score), `rig_warning` (string or null; set when the rig data is behind and needs a new upload).
 
 ### brent.json and rigs.json
 `brent.series` = `[[month, US$ per barrel], ...]`. `rigs.series[country]` = `[[month, oil rigs], ...]`, plus a `note` about Saudi Arabia's count change in January 2024 (show it under any rig chart that includes Saudi Arabia).

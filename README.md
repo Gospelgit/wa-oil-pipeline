@@ -27,7 +27,7 @@ flowchart LR
     K[GitHub Actions, monthly] -.runs.-> A
 ```
 
-1. **Ingestion.** `fetch_jodi.py` downloads JODI's two bulk files (all countries, all series, about 300 MB unzipped). It reads them in chunks and keeps only the 12 countries and 17 series used here. `fetch_brent.py` and `fetch_rigs.py` get the Brent price and oil rig counts.
+1. **Ingestion.** `fetch_jodi.py` downloads JODI's two bulk files (all countries, all series, about 300 MB unzipped). It reads them in chunks and keeps only the 12 countries and 17 series used here. `fetch_brent.py` gets the Brent price. `fetch_rigs.py` reads the oil rig counts from the Baker Hughes report uploaded to `data/manual/rigs/` (their site blocks automated downloads).
 2. **Quality checks.** `checks.py` stops the run if a country goes missing, the data is stale, any value is negative, or too much history disappears. It records revisions, countries that have stopped reporting, and unusual month-to-month jumps.
 3. **Hormuz status.** `hormuz.py` reads the strait's status from Saudi exports against their pre-war level, with a manual override in `config/hormuz_status.json`.
 4. **Peer comparison.** `peers.py` builds the Nigeria against peers table.
@@ -53,6 +53,10 @@ Design decisions and the full test results are in [docs/METHODOLOGY.md](docs/MET
 ### On GitHub
 
 The pipeline runs by itself on the 22nd of every month, after JODI's update around the 20th. To run it by hand, go to **Actions → Monthly pipeline run → Run workflow**, tick **"force"**, then click **Run workflow**. Without force, the run skips if no source has changed.
+
+### Updating the rig counts (monthly, about 1 minute)
+
+Baker Hughes' site blocks automated downloads, so the rig report is uploaded by hand. Early each month, go to the [international rig count page](https://bakerhughesrigcount.gcs-web.com/intl-rig-count) and download **Worldwide Rig Count Report - New Report**. Then, on GitHub, open `data/manual/rigs/`, click **Add file → Upload files**, drop the file in and commit. The upload starts a pipeline run straight away. If the rig data falls more than 2 months behind, the dashboard shows a reminder.
 
 ### Updating the Strait of Hormuz status by hand
 

@@ -1,14 +1,17 @@
 """Update oil rig counts from Baker Hughes' monthly Worldwide Rig Count report.
 
-The report's download link changes every month, so this script reads the
-international rig count page and takes the newest "Worldwide Rig Count" Excel
-file. The report covers January 2024 onwards; older months (2013 to 2023)
-come from the archive file saved in data/reference.
+Baker Hughes' site refuses automated downloads (it returns 403 to GitHub's
+servers), so the report is uploaded by hand: download "Worldwide Rig Count
+Report" from the international rig count page in a browser each month and
+upload it to data/manual/rigs/ on GitHub. The script uses the newest .xlsx
+there. If the folder is empty it tries the site once, politely.
 
-This is the most fragile step in the pipeline. If anything goes wrong
-(page changed, download blocked, file layout changed), the script keeps the
-previous rig data, writes a warning to data/quality/rig_warning.txt, and
-exits without failing the run.
+The report covers January 2024 onwards; older months (2013 to 2023) come from
+the archive file saved in data/reference.
+
+If anything goes wrong, or the rig data is more than 2 months behind, the
+script keeps the previous data, writes a warning to
+data/quality/rig_warning.txt (shown on the website), and does not fail the run.
 
 Run from the project root:  python ingestion/fetch_rigs.py
     python ingestion/fetch_rigs.py --file path/to/report.xlsx   (use a local file)
@@ -21,7 +24,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
-from config import CLEAN, DATA, RAW, REFERENCE, RIG_BASE_URL, RIG_COUNTRIES, RIG_PAGE_URL  # noqa: E402
+from config import CLEAN, DATA, MANUAL_RIGS, RAW, REFERENCE, RIG_BASE_URL, RIG_COUNTRIES, RIG_PAGE_URL  # noqa: E402
 from http_utils import download, get  # noqa: E402
 
 OUT = CLEAN / "oil_rigs.csv"
@@ -77,6 +80,10 @@ def main():
     WARN.parent.mkdir(parents=True, exist_ok=True)
     try:
         path = args.file
+        uploaded = sorted(MANUAL_RIGS.glob("*.xlsx"), key=lambda f: f.stat().st_mtime) if MANUAL_RIGS.exists() else []
+        if not path and uploaded:
+            path = uploaded[-1]
+            print(f"Using uploaded report {path.name}")
         if not path:
             url = newest_report_url()
             print(f"Downloading {url}")
@@ -98,6 +105,12 @@ def main():
     merged.to_csv(OUT, index=False)
     WARN.unlink(missing_ok=True)
     print(f"  {len(merged):,} rows, {merged.month.min()} to {merged.month.max()}")
+    behind = (pd.Period(pd.Timestamp.today(), "M") - pd.Period(merged.month.max(), "M")).n
+    if behind > 2:
+        msg = (f"Rig data ends {merged.month.max()}. Upload the latest Baker Hughes "
+               f"report to data/manual/rigs/ to update it.")
+        print("WARNING:", msg)
+        WARN.write_text(msg)
 
 
 if __name__ == "__main__":

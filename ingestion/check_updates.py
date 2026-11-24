@@ -2,7 +2,7 @@
 
   JODI:   Last-Modified / ETag / size of the two bulk zips (a cheap HEAD request)
   FRED:   the newest Brent month
-  Rigs:   the link of the newest Baker Hughes report (it changes each month)
+  Rigs:   the newest Baker Hughes report uploaded to data/manual/rigs/
 
 Prints the result, and in GitHub Actions sets the step output changed=true/false
 so the workflow can skip the full run when nothing is new.
@@ -21,11 +21,8 @@ import pandas as pd
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
-from config import FRED_BRENT_URL, HEADERS, JODI_URLS, STATE  # noqa: E402
+from config import FRED_BRENT_URL, HEADERS, JODI_URLS, MANUAL_RIGS, STATE  # noqa: E402
 from http_utils import get  # noqa: E402
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from fetch_rigs import newest_report_url  # noqa: E402
 
 STATE_FILE = STATE / "last_updated.json"
 
@@ -43,10 +40,8 @@ def fingerprints():
         fp["brent_latest_month"] = str(d.iloc[-1, 0])[:7]
     except Exception as e:
         fp["brent_latest_month"] = f"unreachable: {e.__class__.__name__}"
-    try:
-        fp["rig_report_url"] = newest_report_url()
-    except Exception as e:
-        fp["rig_report_url"] = f"unreachable: {e.__class__.__name__}"
+    uploads = sorted(MANUAL_RIGS.glob("*.xlsx")) if MANUAL_RIGS.exists() else []
+    fp["rig_uploads"] = "|".join(f"{f.name}:{f.stat().st_size}" for f in uploads) or "none"
     return fp
 
 

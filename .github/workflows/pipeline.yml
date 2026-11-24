@@ -3,6 +3,9 @@ name: Monthly pipeline run
 on:
   schedule:
     - cron: "23 7 22 * *"   # 07:23 UTC on the 22nd (08:23 in Lagos); JODI updates around the 20th
+  push:
+    paths:
+      - "data/manual/rigs/**"  # uploading a new rig report runs the pipeline straight away
   workflow_dispatch:         # adds a "Run workflow" button for manual runs
     inputs:
       force:

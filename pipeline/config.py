@@ -66,3 +66,7 @@ RIG_COUNTRIES = {
 }
 
 HEADERS = {"User-Agent": "wa-oil-pipeline/1.0 (portfolio data project; github.com/Gospelgit)"}
+
+# Baker Hughes' site refuses automated downloads (403). Upload the monthly
+# report (.xlsx) here by hand and the pipeline uses the newest one.
+MANUAL_RIGS = DATA / "manual" / "rigs"
