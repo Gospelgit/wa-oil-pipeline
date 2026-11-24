@@ -1,7 +1,7 @@
 {
   "checked_on": "2026-11-24",
   "newest_month": "2026-09",
-  "rows": 59551,
+  "rows": 64600,
   "reference_values_present_pct": 100.0,
   "revised_since_reference": 0,
   "revised_examples": [],
@@ -21,6 +21,28 @@
   ],
   "unusual_jumps": [
     {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Exports",
+      "prev_month": "2026-05",
+      "prev": 24.0,
+      "month": "2026-06",
+      "value": 1060.0,
+      "change_pct": 4316.7,
+      "score": 900.7
+    },
+    {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-05",
+      "prev": 578.0,
+      "month": "2026-06",
+      "value": 1650.0,
+      "change_pct": 185.5,
+      "score": 142.1
+    },
+    {
       "country": "Norway",
       "product": "Crude oil",
       "flow": "Imports",
@@ -32,6 +54,17 @@
       "score": 64.2
     },
     {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-03",
+      "prev": 1200.0,
+      "month": "2026-04",
+      "value": 562.0,
+      "change_pct": -53.2,
+      "score": -40.7
+    },
+    {
       "country": "Saudi Arabia",
       "product": "Crude oil",
       "flow": "Production",
@@ -41,6 +74,28 @@
       "value": 8372.1,
       "change_pct": 34.2,
       "score": 21.7
+    },
+    {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Exports",
+      "prev_month": "2026-03",
+      "prev": 500.0,
+      "month": "2026-04",
+      "value": 41.0,
+      "change_pct": -91.8,
+      "score": -19.2
+    },
+    {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-06",
+      "prev": 1650.0,
+      "month": "2026-07",
+      "value": 1971.0,
+      "change_pct": 19.5,
+      "score": 14.9
     },
     {
       "country": "Saudi Arabia",
@@ -76,6 +131,17 @@
       "score": 10.8
     },
     {
+      "country": "Kuwait",
+      "product": "Total oil products",
+      "flow": "Exports",
+      "prev_month": "2026-04",
+      "prev": 184.0,
+      "month": "2026-05",
+      "value": 383.0,
+      "change_pct": 108.2,
+      "score": 10.7
+    },
+    {
       "country": "Saudi Arabia",
       "product": "Crude oil",
       "flow": "Production",
@@ -85,6 +151,17 @@
       "value": 8135.0968,
       "change_pct": 14.2,
       "score": 9.0
+    },
+    {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Exports",
+      "prev_month": "2026-04",
+      "prev": 41.0,
+      "month": "2026-05",
+      "value": 24.0,
+      "change_pct": -41.5,
+      "score": -8.7
     },
     {
       "country": "Nigeria",
@@ -98,6 +175,17 @@
       "score": 8.3
     },
     {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-08",
+      "prev": 1988.0,
+      "month": "2026-09",
+      "value": 1774.0,
+      "change_pct": -10.8,
+      "score": -8.2
+    },
+    {
       "country": "Norway",
       "product": "Crude oil",
       "flow": "Refinery intake",
@@ -107,6 +195,17 @@
       "value": 207.2233,
       "change_pct": 46.9,
       "score": 7.4
+    },
+    {
+      "country": "Kuwait",
+      "product": "Total oil products",
+      "flow": "Exports",
+      "prev_month": "2026-05",
+      "prev": 383.0,
+      "month": "2026-06",
+      "value": 667.0,
+      "change_pct": 74.2,
+      "score": 7.3
     },
     {
       "country": "Saudi Arabia",
@@ -120,17 +219,6 @@
       "score": 6.9
     },
     {
-      "country": "United States of America",
-      "product": "Total oil products",
-      "flow": "Refinery output",
-      "prev_month": "2026-08",
-      "prev": 18816.4516,
-      "month": "2026-09",
-      "value": 24341.2,
-      "change_pct": 29.4,
-      "score": 6.7
-    },
-    {
       "country": "Saudi Arabia",
       "product": "Crude oil",
       "flow": "Imports",
@@ -140,6 +228,17 @@
       "value": 0.0,
       "change_pct": -100.0,
       "score": -6.7
+    },
+    {
+      "country": "Kuwait",
+      "product": "Total oil products",
+      "flow": "Exports",
+      "prev_month": "2026-06",
+      "prev": 667.0,
+      "month": "2026-07",
+      "value": 1106.0,
+      "change_pct": 65.8,
+      "score": 6.5
     },
     {
       "country": "Saudi Arabia",
@@ -153,6 +252,17 @@
       "score": 6.4
     },
     {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Refinery intake",
+      "prev_month": "2026-07",
+      "prev": 648.0,
+      "month": "2026-08",
+      "value": 830.0,
+      "change_pct": 28.1,
+      "score": 6.2
+    },
+    {
       "country": "Algeria",
       "product": "Gas/diesel oil",
       "flow": "Imports",
@@ -164,15 +274,15 @@
       "score": 6.2
     },
     {
-      "country": "Saudi Arabia",
-      "product": "Crude oil",
-      "flow": "Production",
-      "prev_month": "2026-03",
-      "prev": 6967.0968,
-      "month": "2026-04",
-      "value": 6316.0,
-      "change_pct": -9.3,
-      "score": -6.0
+      "country": "United States of America",
+      "product": "Total oil products",
+      "flow": "Refinery output",
+      "prev_month": "2026-08",
+      "prev": 18816.4516,
+      "month": "2026-09",
+      "value": 24341.2,
+      "change_pct": 29.4,
+      "score": 6.1
     },
     {
       "country": "Libya",
@@ -187,6 +297,28 @@
     },
     {
       "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-03",
+      "prev": 6967.0968,
+      "month": "2026-04",
+      "value": 6316.0,
+      "change_pct": -9.3,
+      "score": -6.0
+    },
+    {
+      "country": "Kuwait",
+      "product": "Crude oil",
+      "flow": "Refinery intake",
+      "prev_month": "2026-05",
+      "prev": 492.0,
+      "month": "2026-06",
+      "value": 622.0,
+      "change_pct": 26.4,
+      "score": 5.8
+    },
+    {
+      "country": "Saudi Arabia",
       "product": "Gas/diesel oil",
       "flow": "Imports",
       "prev_month": "2026-03",
@@ -195,6 +327,39 @@
       "value": 103.2,
       "change_pct": 328.3,
       "score": 5.7
+    },
+    {
+      "country": "Kuwait",
+      "product": "Total oil products",
+      "flow": "Refinery output",
+      "prev_month": "2026-05",
+      "prev": 490.0,
+      "month": "2026-06",
+      "value": 639.0,
+      "change_pct": 30.4,
+      "score": 5.6
+    },
+    {
+      "country": "Libya",
+      "product": "Motor and aviation gasoline",
+      "flow": "Refinery output",
+      "prev_month": "2026-06",
+      "prev": 13.0,
+      "month": "2026-07",
+      "value": 6.0,
+      "change_pct": -53.8,
+      "score": -5.4
+    },
+    {
+      "country": "Kuwait",
+      "product": "Motor and aviation gasoline",
+      "flow": "Exports",
+      "prev_month": "2026-03",
+      "prev": 17.0,
+      "month": "2026-04",
+      "value": 0.0,
+      "change_pct": -100.0,
+      "score": -5.4
     },
     {
       "country": "Saudi Arabia",
@@ -208,15 +373,26 @@
       "score": 5.4
     },
     {
-      "country": "Libya",
-      "product": "Motor and aviation gasoline",
+      "country": "Kuwait",
+      "product": "Total oil products",
+      "flow": "Exports",
+      "prev_month": "2026-03",
+      "prev": 384.0,
+      "month": "2026-04",
+      "value": 184.0,
+      "change_pct": -52.1,
+      "score": -5.2
+    },
+    {
+      "country": "Kuwait",
+      "product": "Total oil products",
       "flow": "Refinery output",
-      "prev_month": "2026-06",
-      "prev": 13.0,
-      "month": "2026-07",
-      "value": 6.0,
-      "change_pct": -53.8,
-      "score": -5.4
+      "prev_month": "2026-08",
+      "prev": 901.0,
+      "month": "2026-09",
+      "value": 651.0,
+      "change_pct": -27.7,
+      "score": -5.2
     },
     {
       "country": "Libya",

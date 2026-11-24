@@ -3,10 +3,11 @@
   "decided_by": "data",
   "data_status": "restricted",
   "latest_month": "2026-09",
-  "latest_pct_of_prewar": 76.5,
-  "lowest_pct_of_prewar": 48.8,
+  "latest_pct_of_prewar": 77.4,
+  "lowest_pct_of_prewar": 1.7,
   "lowest_month": "2026-05",
-  "prewar_exports_kbd": 7032.0,
+  "signal_country": "Kuwait",
+  "prewar_exports_kbd": 1421.0,
   "prewar_period": "2025-09 to 2026-02",
   "rules": {
     "closed_below_pct": 60,
@@ -14,8 +15,69 @@
     "open_needs_consecutive_months": 2
   },
   "override": null,
-  "saudi_forecast_warning": true,
+  "forecast_warning": true,
+  "forecast_warning_countries": [
+    "Kuwait",
+    "Saudi Arabia"
+  ],
   "monthly_pct_of_prewar": [
+    {
+      "month": "2025-09",
+      "pct": 90.4
+    },
+    {
+      "month": "2025-10",
+      "pct": 116.1
+    },
+    {
+      "month": "2025-11",
+      "pct": 116.8
+    },
+    {
+      "month": "2025-12",
+      "pct": 103.1
+    },
+    {
+      "month": "2026-01",
+      "pct": 88.2
+    },
+    {
+      "month": "2026-02",
+      "pct": 85.3
+    },
+    {
+      "month": "2026-03",
+      "pct": 35.2
+    },
+    {
+      "month": "2026-04",
+      "pct": 2.9
+    },
+    {
+      "month": "2026-05",
+      "pct": 1.7
+    },
+    {
+      "month": "2026-06",
+      "pct": 74.6
+    },
+    {
+      "month": "2026-07",
+      "pct": 79.4
+    },
+    {
+      "month": "2026-08",
+      "pct": 73.7
+    },
+    {
+      "month": "2026-09",
+      "pct": 77.4
+    }
+  ],
+  "context_country": "Saudi Arabia",
+  "context_note": "Saudi Arabia can bypass the strait through its East-West pipeline to the Red Sea, so its exports fall less than the strait's traffic.",
+  "context_latest_pct_of_prewar": 76.5,
+  "context_monthly_pct_of_prewar": [
     {
       "month": "2025-09",
       "pct": 91.9
