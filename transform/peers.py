@@ -58,7 +58,7 @@ def main():
     t["fuel_self_sufficiency_pct"] = (out_ / dem.replace(0, np.nan) * 100).round(1)
     t["net_product_exports_kbd"] = (exp - imp).round(1)
 
-    # Rig counts as published for that year (Saudi on its current method).
+    # Rig counts as published for that year.
     rg = pd.read_csv(CLEAN / "oil_rigs.csv")
     rg = rg[(rg.drill_for == "Oil") & (rg.month.str[:4] == last_full_year)
             & (rg.rig_status != "Active Rigs (old method, overlap)")]

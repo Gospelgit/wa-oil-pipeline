@@ -28,15 +28,17 @@ The MAD (median absolute deviation) times 1.4826 estimates the normal spread wit
 
 ## 5. Strait of Hormuz status
 
-Saudi Arabia ships most of its crude through the strait, so its exports measure whether the strait is working. The pre-war level is the average from September 2025 to February 2026 (7,032 kb/d).
+**Signal: Kuwait.** Kuwait has no pipeline around the strait, so every barrel it exports by sea passes through Hormuz. Its crude exports against their pre-war level (the average from September 2025 to February 2026) measure whether the strait is working.
 
-| Saudi exports vs pre-war | Status |
+**Why not Saudi Arabia.** About 5.5 of Saudi Arabia's 6.3 mb/d of crude exports in 2025 went through the strait, but its 7 mb/d East-West pipeline to Yanbu on the Red Sea lets it keep exporting when the strait is shut. In April 2026, with the strait effectively closed, Saudi exports were still 57% of pre-war while Kuwait's were 3%. Saudi Arabia was the first choice of signal and was replaced for this reason. It's still shown on the card as context. Iraq, Qatar and the UAE would also work, but they don't report crude exports to JODI.
+
+| Kuwait's exports vs pre-war | Status |
 | --- | --- |
 | Under 60% | Closed |
 | 60% to 90% | Restricted |
 | 90% or more for 2 months in a row | Open |
 
-Exports fell to 49% in May 2026 and were 76% in September 2026. Because JODI runs about two months behind, `config/hormuz_status.json` can override the status by hand. While the status isn't "open", Saudi Arabia's forecast carries a warning.
+Kuwait's exports fell to 3% in April and 2% in May 2026, then recovered to 75% in June and 77% in September (Restricted). Saudi exports bottomed at 49% in May. Because JODI runs about two months behind, `config/hormuz_status.json` can override the status by hand. While the status isn't "open", the Kuwaiti and Saudi forecasts carry a warning.
 
 ## 6. Forecasting crude production
 
@@ -53,11 +55,13 @@ Exports fell to 49% in May 2026 and were 76% in September 2026. Because JODI run
 
 | Average absolute % error, months 1 to 12 | Selection | Test |
 | --- | --- | --- |
-| Blend | **7.85** | 5.37 |
-| Damped Holt | 7.86 | **5.25** |
-| Naive | 8.14 | 5.63 |
-| Mean3 | 8.37 | 5.65 |
-| Drivers | 9.33 | 5.84 |
+| Blend | **7.77** | 6.73 |
+| Damped Holt | 7.81 | **6.61** |
+| Naive | 8.07 | 6.94 |
+| Mean3 | 8.27 | 6.98 |
+| Drivers | 9.15 | 7.09 |
+
+The test errors rose after Kuwait was added (about 5.3% before), because Kuwait's exports and output collapsed in spring 2026 when the strait shut. No model trained on past months could foresee that.
 
 **Choice:** the blend, which won the selection period by a hair. It is effectively tied with damped Holt.
 
@@ -67,7 +71,7 @@ Exports fell to 49% in May 2026 and were 76% in September 2026. Because JODI run
 
 **Not forecast:** countries whose latest data is 3 or more months behind the newest (Angola, Iran, Russia), and Libya, which has too little recent history.
 
-**Test error by country (blend):** US 1.7%, Canada 3.2%, Algeria 4.4%, Norway 4.7%, Nigeria 7.0%, Venezuela 7.8%, Saudi Arabia 8.4%. The less stable the country, the harder it is to forecast.
+**Test error by country (blend):** US 1.7%, Canada 3.2%, Algeria 4.4%, Norway 4.7%, Nigeria 7.0%, Venezuela 7.8%, Saudi Arabia 8.4%, Kuwait 15.6% (the Hormuz closure). The less stable the country, the harder it is to forecast.
 
 ## 7. Limitations
 

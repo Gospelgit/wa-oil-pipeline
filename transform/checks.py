@@ -2,10 +2,11 @@
 everything else is recorded in public_data/quality.json for the website.
 
 Hard checks (the run stops):
-  - every one of the 12 countries is present
+  - every one of the 13 countries is present
   - crude production exists and its newest month is no more than 4 months old
   - no negative flows (stocks can't be negative either)
   - at least 90% of the values in the November 2026 hand exports are still there
+    (for the countries still tracked)
 
 Soft checks (recorded, run continues):
   - revisions: values that changed since the hand exports (JODI revises data)
@@ -63,6 +64,8 @@ def jumps(jodi, newest):
 def main():
     jodi = pd.read_csv(CLEAN / "jodi.csv")
     ref = pd.read_csv(REFERENCE / "jodi_hand_exports_2026-11.csv")
+    # Compare only countries that were in the hand exports and are still tracked.
+    ref = ref[ref.country.isin([c for c, _ in COUNTRIES.values()])]
 
     missing = set(c for c, _ in COUNTRIES.values()) - set(jodi.country)
     if missing:

@@ -1,14 +1,19 @@
 """Work out the Strait of Hormuz status from the data, with an optional manual override.
 
-Saudi Arabia ships most of its crude through the strait, so its exports
-compared with their pre-war level are a direct reading of whether the strait
-is working:
+Kuwait has no pipeline around the strait: every barrel it exports by sea
+passes through Hormuz. So Kuwait's crude exports compared with their pre-war
+level are a direct reading of whether the strait is working.
+
+Saudi Arabia is shown alongside as context, not as the signal: its East-West
+pipeline to the Red Sea lets it keep exporting while the strait is shut, so
+its exports understate a closure (57% of pre-war in April 2026, when Kuwait's
+were 3%).
 
     under 60% of pre-war               -> closed
     60% to 90%                         -> restricted
     90% or more for 2 months in a row  -> open
 
-Pre-war level = average Saudi crude exports, Sep 2025 to Feb 2026.
+Pre-war level = average Kuwaiti crude exports, Sep 2025 to Feb 2026.
 JODI runs about two months behind, so config/hormuz_status.json can set the
 status by hand when news moves faster than the data.
 
@@ -24,6 +29,9 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "pipeline"))
 from config import CLEAN, CONFIG, PUBLIC, REFERENCE  # noqa: E402
 
+SIGNAL_COUNTRY = "Kuwait"
+CONTEXT_COUNTRY = "Saudi Arabia"
+AFFECTED = ["Kuwait", "Saudi Arabia"]  # forecasts that carry a warning while not open
 BASELINE = ("2025-09", "2026-02")
 CLOSED_BELOW, OPEN_FROM, OPEN_MONTHS = 60, 90, 2
 
@@ -38,10 +46,14 @@ def status_from_ratio(ratios):
 def main():
     path = CLEAN / "jodi.csv"
     jodi = pd.read_csv(path if path.exists() else REFERENCE / "jodi_hand_exports_2026-11.csv")
-    s = (jodi[(jodi.country == "Saudi Arabia") & (jodi["product"] == "Crude oil") & (jodi.flow == "Exports")]
-         .dropna(subset=["value"]).set_index("month").value.sort_index())
-    base = s[BASELINE[0]:BASELINE[1]].mean()
-    ratios = (s[BASELINE[0]:] / base * 100).round(1)
+    def pct_of_prewar(country):
+        s = (jodi[(jodi.country == country) & (jodi["product"] == "Crude oil") & (jodi.flow == "Exports")]
+             .dropna(subset=["value"]).set_index("month").value.sort_index())
+        base = s[BASELINE[0]:BASELINE[1]].mean()
+        return (s[BASELINE[0]:] / base * 100).round(1), base
+
+    ratios, base = pct_of_prewar(SIGNAL_COUNTRY)
+    context, _ = pct_of_prewar(CONTEXT_COUNTRY)
     data_status = status_from_ratio(ratios)
 
     cfg = json.loads((CONFIG / "hormuz_status.json").read_text())
@@ -57,17 +69,24 @@ def main():
         "latest_pct_of_prewar": float(ratios.iloc[-1]),
         "lowest_pct_of_prewar": float(ratios.min()),
         "lowest_month": ratios.idxmin(),
+        "signal_country": SIGNAL_COUNTRY,
         "prewar_exports_kbd": round(float(base), 0),
         "prewar_period": f"{BASELINE[0]} to {BASELINE[1]}",
         "rules": {"closed_below_pct": CLOSED_BELOW, "open_from_pct": OPEN_FROM,
                   "open_needs_consecutive_months": OPEN_MONTHS},
         "override": override,
-        "saudi_forecast_warning": (override["status"] if override else data_status) != "open",
+        "forecast_warning": (override["status"] if override else data_status) != "open",
+        "forecast_warning_countries": AFFECTED,
         "monthly_pct_of_prewar": [{"month": m, "pct": float(v)} for m, v in ratios.items()],
+        "context_country": CONTEXT_COUNTRY,
+        "context_note": "Saudi Arabia can bypass the strait through its East-West pipeline to the Red Sea, "
+                        "so its exports fall less than the strait's traffic.",
+        "context_latest_pct_of_prewar": float(context.iloc[-1]),
+        "context_monthly_pct_of_prewar": [{"month": m, "pct": float(v)} for m, v in context.items()],
     }
     PUBLIC.mkdir(exist_ok=True)
     (PUBLIC / "hormuz_status.json").write_text(json.dumps(out, indent=2))
-    print(f"Hormuz status: {out['status']} ({out['decided_by']}); Saudi exports at "
+    print(f"Hormuz status: {out['status']} ({out['decided_by']}); {SIGNAL_COUNTRY} exports at "
           f"{out['latest_pct_of_prewar']}% of pre-war in {out['latest_month']}")
 
 

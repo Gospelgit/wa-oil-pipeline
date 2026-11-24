@@ -107,8 +107,8 @@ def main():
     for c, g in fc.groupby("country"):
         hist = prod[prod.country == c].set_index("month").value
         warning = None
-        if c == "Saudi Arabia" and hormuz["saudi_forecast_warning"]:
-            warning = (f"Strait of Hormuz {hormuz['status']}: Saudi output depends on shipping through the "
+        if c in hormuz["forecast_warning_countries"] and hormuz["forecast_warning"]:
+            warning = (f"Strait of Hormuz {hormuz['status']}: {c}'s output depends on shipping through the "
                        f"strait, which past data can't predict. Treat this forecast with caution.")
         fcs[c] = {
             "history": pairs(hist.iloc[-36:]),

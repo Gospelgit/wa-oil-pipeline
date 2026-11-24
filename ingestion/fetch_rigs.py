@@ -76,7 +76,7 @@ def main():
     args = ap.parse_args()
 
     current = pd.read_csv(OUT) if OUT.exists() else pd.read_csv(
-        REFERENCE / "baker_hughes_rigs_monthly_10_countries_long.csv")
+        REFERENCE / "baker_hughes_rigs_monthly_long.csv")
     WARN.parent.mkdir(parents=True, exist_ok=True)
     try:
         path = args.file

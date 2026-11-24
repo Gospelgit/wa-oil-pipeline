@@ -1,6 +1,7 @@
-.venv/
-__pycache__/
 *.pyc
-data/raw/
-data/quality/
+.venv/
 REPLIT_HANDOVER.md
+REPLIT_UPDATE*.md
+__pycache__/
+data/quality/
+data/raw/

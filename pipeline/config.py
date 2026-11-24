@@ -17,6 +17,7 @@ COUNTRIES = {
     "AO": ("Angola", "Africa"),
     "LY": ("Libya", "Africa"),
     "SA": ("Saudi Arabia", "Middle East"),
+    "KW": ("Kuwait", "Middle East"),
     "IR": ("Iran (Islamic Rep.)", "Middle East"),
     "NO": ("Norway", "Europe"),
     "RU": ("Russian Federation", "Europe"),
@@ -61,7 +62,8 @@ RIG_BASE_URL = "https://bakerhughesrigcount.gcs-web.com"
 RIG_COUNTRIES = {
     "ALGERIA": "Algeria", "ANGOLA": "Angola", "BRAZIL": "Brazil", "CANADA": "Canada",
     "LIBYA": "Libya", "NIGERIA": "Nigeria", "NORWAY": "Norway",
-    "SAUDI ARABIA": "Saudi Arabia", "UNITED STATES": "United States of America",
+    "KUWAIT": "Kuwait", "SAUDI ARABIA": "Saudi Arabia",
+    "UNITED STATES": "United States of America",
     "VENEZUELA": "Venezuela",
 }
 

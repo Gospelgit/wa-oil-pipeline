@@ -2,7 +2,7 @@
 
 The two bulk zips hold every country, product and flow since 2002
 (the primary CSV alone is about 290 MB unzipped). We read them in chunks,
-keep the 12 countries and the series listed in config.JODI_SERIES, and
+keep the 13 countries and the series listed in config.JODI_SERIES, and
 write one tidy file: data/clean/jodi.csv.
 
 Run from the project root:

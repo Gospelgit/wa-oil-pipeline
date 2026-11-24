@@ -10,7 +10,8 @@ DATA = ROOT / "data"
 RIG_NAMES = {
     "ALGERIA": "Algeria", "ANGOLA": "Angola", "BRAZIL": "Brazil", "CANADA": "Canada",
     "LIBYA": "Libya", "NIGERIA": "Nigeria", "NORWAY": "Norway",
-    "SAUDI ARABIA": "Saudi Arabia", "UNITED STATES": "United States of America",
+    "KUWAIT": "Kuwait", "SAUDI ARABIA": "Saudi Arabia",
+    "UNITED STATES": "United States of America",
     "VENEZUELA": "Venezuela",
 }
 
@@ -50,7 +51,7 @@ def oil_rigs(path=None):
     """
     path = path or DATA / "clean" / "oil_rigs.csv"
     if not Path(path).exists():
-        path = DATA / "reference" / "baker_hughes_rigs_monthly_10_countries_long.csv"
+        path = DATA / "reference" / "baker_hughes_rigs_monthly_long.csv"
     d = pd.read_csv(path)
     d = d[d.drill_for == "Oil"]
     out = {}
