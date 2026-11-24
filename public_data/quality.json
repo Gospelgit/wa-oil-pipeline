@@ -241,5 +241,5 @@
       "score": -5.0
     }
   ],
-  "rig_warning": "Rig update skipped, previous data kept: Could not download https://bakerhughesrigcount.gcs-web.com/intl-rig-count: 403 Client Error: Forbidden for url: https://bakerhughesrigcount.gcs-web.com/intl-rig-count"
+  "rig_warning": null
 }
