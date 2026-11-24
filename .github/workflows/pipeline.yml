@@ -1,0 +1,91 @@
+name: Monthly pipeline run
+
+on:
+  schedule:
+    - cron: "23 7 22 * *"   # 07:23 UTC on the 22nd (08:23 in Lagos); JODI updates around the 20th
+  workflow_dispatch:         # adds a "Run workflow" button for manual runs
+    inputs:
+      force:
+        description: "Run the full pipeline even if there is no new data"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write            # lets the workflow save files back to the repo
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install libraries
+        run: pip install -r requirements.txt
+
+      - name: Check for new data
+        id: check
+        run: python ingestion/check_updates.py
+
+  run-pipeline:
+    needs: check
+    if: needs.check.outputs.changed == 'true' || inputs.force
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install libraries
+        run: pip install -r requirements.txt
+
+      - name: Fetch JODI (crude and products)
+        run: python ingestion/fetch_jodi.py
+
+      - name: Fetch Brent price (FRED)
+        run: python ingestion/fetch_brent.py
+
+      - name: Fetch rig counts (Baker Hughes)
+        run: python ingestion/fetch_rigs.py
+
+      - name: Check data quality
+        run: python transform/checks.py
+
+      - name: Strait of Hormuz status
+        run: python transform/hormuz.py
+
+      - name: Compare Nigeria with peers
+        run: python transform/peers.py
+
+      - name: Backtest forecasting models
+        run: python ml/backtest.py
+
+      - name: Forecast crude production
+        run: python ml/forecast.py
+
+      - name: Export JSON for the website
+        run: python publish/export_json.py
+
+      - name: Record source fingerprints
+        run: python ingestion/check_updates.py --save
+
+      - name: Commit the data and website files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state public_data data/clean data/forecast data/backtest
+          git diff --staged --quiet || git commit -m "Monthly data refresh"
+          git push

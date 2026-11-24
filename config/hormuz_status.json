@@ -1,0 +1,10 @@
+{
+  "_help": "Leave override as null to let the data decide. To set the status by hand after major news, replace null with an object like the example. Status must be closed, restricted or open. Remove it again (set to null) once the JODI data has caught up.",
+  "_example": {
+    "status": "open",
+    "as_of": "2026-12-01",
+    "note": "US-Iran agreement in force; tanker traffic back to normal",
+    "source": "https://example.com/news-article"
+  },
+  "override": null
+}

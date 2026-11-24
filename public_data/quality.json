@@ -1,0 +1,245 @@
+{
+  "checked_on": "2026-11-24",
+  "newest_month": "2026-09",
+  "rows": 50571,
+  "reference_values_present_pct": 100.0,
+  "revised_since_reference": 0,
+  "revised_examples": [],
+  "stopped_reporting": [
+    {
+      "country": "Angola",
+      "last_month": "2023-11"
+    },
+    {
+      "country": "Iran (Islamic Rep.)",
+      "last_month": "2018-07"
+    },
+    {
+      "country": "Russian Federation",
+      "last_month": "2023-03"
+    }
+  ],
+  "unusual_jumps": [
+    {
+      "country": "Norway",
+      "product": "Crude oil",
+      "flow": "Imports",
+      "prev_month": "2026-05",
+      "prev": 0.7132,
+      "month": "2026-06",
+      "value": 45.4483,
+      "change_pct": 6272.4,
+      "score": 64.2
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-08",
+      "prev": 6237.9032,
+      "month": "2026-09",
+      "value": 8372.1,
+      "change_pct": 34.2,
+      "score": 21.7
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-07",
+      "prev": 8135.0968,
+      "month": "2026-08",
+      "value": 6237.9032,
+      "change_pct": -23.3,
+      "score": -14.9
+    },
+    {
+      "country": "Nigeria",
+      "product": "Gas/diesel oil",
+      "flow": "Demand",
+      "prev_month": "2026-07",
+      "prev": 27.0,
+      "month": "2026-08",
+      "value": 122.0,
+      "change_pct": 351.9,
+      "score": 14.4
+    },
+    {
+      "country": "Nigeria",
+      "product": "Crude oil",
+      "flow": "Imports",
+      "prev_month": "2026-04",
+      "prev": 14.0,
+      "month": "2026-05",
+      "value": 144.0,
+      "change_pct": 928.6,
+      "score": 10.8
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-06",
+      "prev": 7122.3,
+      "month": "2026-07",
+      "value": 8135.0968,
+      "change_pct": 14.2,
+      "score": 9.0
+    },
+    {
+      "country": "Nigeria",
+      "product": "Motor and aviation gasoline",
+      "flow": "Imports",
+      "prev_month": "2026-05",
+      "prev": 37.0,
+      "month": "2026-06",
+      "value": 114.0,
+      "change_pct": 208.1,
+      "score": 8.3
+    },
+    {
+      "country": "Norway",
+      "product": "Crude oil",
+      "flow": "Refinery intake",
+      "prev_month": "2026-03",
+      "prev": 141.1019,
+      "month": "2026-04",
+      "value": 207.2233,
+      "change_pct": 46.9,
+      "score": 7.4
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Imports",
+      "prev_month": "2026-03",
+      "prev": 25.8065,
+      "month": "2026-04",
+      "value": 0.0,
+      "change_pct": -100.0,
+      "score": -6.7
+    },
+    {
+      "country": "United States of America",
+      "product": "Total oil products",
+      "flow": "Refinery output",
+      "prev_month": "2026-08",
+      "prev": 18816.45,
+      "month": "2026-09",
+      "value": 24341.2,
+      "change_pct": 29.4,
+      "score": 6.7
+    },
+    {
+      "country": "Algeria",
+      "product": "Gas/diesel oil",
+      "flow": "Imports",
+      "prev_month": "2026-04",
+      "prev": 7.0,
+      "month": "2026-05",
+      "value": 29.0,
+      "change_pct": 314.3,
+      "score": 6.2
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-03",
+      "prev": 6967.0968,
+      "month": "2026-04",
+      "value": 6316.0,
+      "change_pct": -9.3,
+      "score": -6.0
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Motor and aviation gasoline",
+      "flow": "Demand",
+      "prev_month": "2026-04",
+      "prev": 416.6,
+      "month": "2026-05",
+      "value": 549.2,
+      "change_pct": 31.8,
+      "score": 6.0
+    },
+    {
+      "country": "Libya",
+      "product": "Crude oil",
+      "flow": "Refinery intake",
+      "prev_month": "2026-06",
+      "prev": 135.0,
+      "month": "2026-07",
+      "value": 102.0,
+      "change_pct": -24.4,
+      "score": -6.0
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Gas/diesel oil",
+      "flow": "Imports",
+      "prev_month": "2026-03",
+      "prev": 24.1,
+      "month": "2026-04",
+      "value": 103.2,
+      "change_pct": 328.2,
+      "score": 5.7
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Motor and aviation gasoline",
+      "flow": "Demand",
+      "prev_month": "2026-08",
+      "prev": 497.2,
+      "month": "2026-09",
+      "value": 643.6,
+      "change_pct": 29.4,
+      "score": 5.5
+    },
+    {
+      "country": "Libya",
+      "product": "Motor and aviation gasoline",
+      "flow": "Refinery output",
+      "prev_month": "2026-06",
+      "prev": 13.0,
+      "month": "2026-07",
+      "value": 6.0,
+      "change_pct": -53.8,
+      "score": -5.4
+    },
+    {
+      "country": "Saudi Arabia",
+      "product": "Crude oil",
+      "flow": "Production",
+      "prev_month": "2026-05",
+      "prev": 6560.7097,
+      "month": "2026-06",
+      "value": 7122.3,
+      "change_pct": 8.6,
+      "score": 5.4
+    },
+    {
+      "country": "Nigeria",
+      "product": "Total oil products",
+      "flow": "Imports",
+      "prev_month": "2026-06",
+      "prev": 158.0,
+      "month": "2026-07",
+      "value": 0.0,
+      "change_pct": -100.0,
+      "score": -5.2
+    },
+    {
+      "country": "Libya",
+      "product": "Gas/diesel oil",
+      "flow": "Refinery output",
+      "prev_month": "2026-06",
+      "prev": 35.0,
+      "month": "2026-07",
+      "value": 25.0,
+      "change_pct": -28.6,
+      "score": -5.1
+    }
+  ],
+  "rig_warning": null
+}

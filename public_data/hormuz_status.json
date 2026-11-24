@@ -1,0 +1,72 @@
+{
+  "status": "restricted",
+  "decided_by": "data",
+  "data_status": "restricted",
+  "latest_month": "2026-09",
+  "latest_pct_of_prewar": 76.5,
+  "lowest_pct_of_prewar": 48.8,
+  "lowest_month": "2026-05",
+  "prewar_exports_kbd": 7032.0,
+  "prewar_period": "2025-09 to 2026-02",
+  "rules": {
+    "closed_below_pct": 60,
+    "open_from_pct": 90,
+    "open_needs_consecutive_months": 2
+  },
+  "override": null,
+  "saudi_forecast_warning": true,
+  "monthly_pct_of_prewar": [
+    {
+      "month": "2025-09",
+      "pct": 91.9
+    },
+    {
+      "month": "2025-10",
+      "pct": 100.9
+    },
+    {
+      "month": "2025-11",
+      "pct": 104.9
+    },
+    {
+      "month": "2025-12",
+      "pct": 99.4
+    },
+    {
+      "month": "2026-01",
+      "pct": 99.4
+    },
+    {
+      "month": "2026-02",
+      "pct": 103.5
+    },
+    {
+      "month": "2026-03",
+      "pct": 70.7
+    },
+    {
+      "month": "2026-04",
+      "pct": 56.7
+    },
+    {
+      "month": "2026-05",
+      "pct": 48.8
+    },
+    {
+      "month": "2026-06",
+      "pct": 56.8
+    },
+    {
+      "month": "2026-07",
+      "pct": 58.7
+    },
+    {
+      "month": "2026-08",
+      "pct": 63.3
+    },
+    {
+      "month": "2026-09",
+      "pct": 76.5
+    }
+  ]
+}
